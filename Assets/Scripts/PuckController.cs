@@ -39,4 +39,13 @@ public class PuckController : MonoBehaviour
             transform.Translate(transform.right * -puckSpeed * Time.deltaTime);
         }
     }
+
+     private void OnTriggerEnter2D(Collider2D other)
+    {
+        puckSpeed = -puckSpeed;
+    }
+
+
 }
+
+
