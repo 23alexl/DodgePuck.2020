@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Blocky
+  - Wall
+  - Puck
   layers:
   - Default
   - TransparentFX

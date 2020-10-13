@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public float yRange = 6.0f;
     public GameObject Puck;
     public GameObject Blocky;
+    public GameObject scoreText;
+    public GameObject gameOverText;
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +95,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log(Score);
             SpawnPuck();
             SpawnBlocky();
+        }
+
+        if (other.gameObject.CompareTag("Puck"))
+        {
+            gameOverText.SetActive(true);
+            Time.timeScale = 0;
         }
         
        

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2426439184574255082}
   m_Layer: 0
   m_Name: Puck
-  m_TagString: Untagged
+  m_TagString: Puck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   direction: 00000000010000000200000003000000
   moveDirection: 0
   puckSpeed: 5
+  xRange: 9
+  yRange: 6
 --- !u!58 &-2426439184574255082
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -6,7 +6,9 @@ public class PuckController : MonoBehaviour
 {
     public int[] direction = { 0, 1, 2, 3 };
     public int moveDirection;
-    public float puckSpeed = 5.0f;
+    public float puckSpeed = 5.0f; 
+    public float xRange = 9.0f;
+    public float yRange = 6.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +42,42 @@ public class PuckController : MonoBehaviour
         }
     }
 
-     private void OnTriggerEnter2D(Collider2D other)
+    private void LateUpdate()
+
     {
-        puckSpeed = -puckSpeed;
+        if (transform.position.x > xRange)
+        {
+            transform.position = new Vector2(xRange, transform.position.y);
+        }
+
+        if (transform.position.x < -xRange)
+        {
+            transform.position = new Vector2(-xRange, transform.position.y);
+        }
+
+        if (transform.position.y > yRange)
+        {
+            transform.position = new Vector2(transform.position.x, yRange);
+        }
+
+        if (transform.position.y < -yRange)
+        {
+            transform.position = new Vector2(transform.position.x, -yRange);
+        }
+
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+
+        {
+            puckSpeed = -puckSpeed;
+            //Debug.Log("Hit Wall");
+        }
+    }
+    
+
 
 
 }
