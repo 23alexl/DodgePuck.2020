@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         //Debug.Log("Hello, World");
-        Score += 5;
+        // Score += 5;
        // Debug.Log(score + hiscore + temp);
        // Debug.Log("location: + 0.5f");
         SpawnPuck();
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
    
     void SpawnBlocky()
     {
-
+        Instantiate(Blocky, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -90,11 +91,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Blocky"))
         {           
             Destroy(other.gameObject);
-            Instantiate(Blocky, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
-            Score += 5;
+            //Instantiate(Blocky, new Vector2(Random.Range(-xRange, xRange), Random.Range(-yRange, yRange)), Quaternion.identity);
             Debug.Log(Score);
             SpawnPuck();
             SpawnBlocky();
+            //scoreText.GetComponent<scoreKeeper>().scoreValue += 5;
+            scoreText.GetComponent<scoreKeeper>().UpdateScore();
         }
 
         if (other.gameObject.CompareTag("Puck"))
@@ -107,6 +109,15 @@ public class PlayerController : MonoBehaviour
     }
 
     
+    public void Reset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+    }
+
+
+
+
 }
 
 
